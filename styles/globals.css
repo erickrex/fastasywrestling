@@ -1,0 +1,136 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #1c1e21;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 20vh;
+  
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  font-size: 1.5em;
+  color: white;
+}
+
+.Menu{
+  color: white;
+}
+
+.match {
+  color: white;
+  background-color: black;
+}
+
+
+.horizontal-wrestlers {
+  padding: .5rem;
+  display: flex;
+  background-color: black;
+  flex-direction: row;
+  overflow: auto;
+  gap: .5rem;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(auto-fill, 300px);
+  align-items: center;
+}
+
+.invisible {
+  width: 2px;
+  height: 2px;
+}
+.vertical-wrestlers {
+  background-color: #49505e;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 300px;
+  padding: .5rem;
+}
+.wrestler {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  min-width: 200px;
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.verticalStack:not(:last-of-type) {
+  margin-bottom: .5rem;
+}
+.wrestler * {  
+  margin: 0;
+  font-size: 1.2rem;
+}
+.group-title {
+  text-align: left;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+}
+.current {
+  background-color: red;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.aew {
+  color: #b19155;
+}
+
+.wwe {
+  color: #d7182a;
+}
+
+.nxt {
+  color: yellow;
+}
+
+.njpw {
+  color: #e71a21; 
+}
