@@ -1,4 +1,4 @@
-import { stepMachine, Card } from "../data/Wwe_2021_02_21";
+import { stepMachine } from "../data/Wwe_2021_03_21";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useMachine } from "@xstate/react";

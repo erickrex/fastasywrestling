@@ -7,10 +7,10 @@ export const stepMachine = Machine({
   states: {
     one: {
       meta: {
-        matchName: "Universal Championship",
+        matchName: "Special referee decision",
         contenders:   [
-                      {name: "Roman Reigns", status: "champion"}, 
-                      {name: "Daniel Bryan", status: "challenger"},
+                      {name: "Edge", status: "challenger"}, 
+                      {name: "Jay Uso", status: "challenger"}
                       
                   ]
       },
@@ -21,7 +21,7 @@ export const stepMachine = Machine({
         matchName: "Women's Tag Team Championship",
         contenders:   [
                       {name: "Nia Jax $ & Shayna Baszler", status: "champion"}, 
-                      {name: "Bianca Belair & Sasha Banks", status: "challenger"},
+                      {name: "Bianca Belair & Sasha Banks", status: "challenger"}
                       
                   ]
       },
@@ -32,7 +32,7 @@ export const stepMachine = Machine({
         matchName: "Intercontinental Championship",
         contenders:   [
                       {name: "Big E", status: "champion"}, 
-                      {name: "Apollo Crews", status: "challenger"},
+                      {name: "Apollo Crews", status: "challenger"}
                       
                   ]
       },
@@ -53,8 +53,19 @@ export const stepMachine = Machine({
         matchName: "United States Championship",
         contenders:   [
                       {name: "Riddle", status: "champion"}, 
-                      {name: "Mustafa Ali", status: "challenger"},
+                      {name: "Mustafa Ali", status: "challenger"}
                       
+                  ]
+      },
+      type: 'final'
+    },
+    six: {
+      meta: {
+        matchName: "Universal Championship",
+        contenders:   [
+                      {name: "Roman Reigns", status: "champion"}, 
+                      {name: "Daniel Bryan", status: "challenger"},
+                      {name: "Winner from match 1", status: "referee"}
                   ]
       },
       type: 'final'
@@ -63,45 +74,3 @@ export const stepMachine = Machine({
 });
 
 console.log(stepMachine.transition('one', 'NEXT').value);
-
-export const Card = [
-  {
-    matchName: "United States Championship",
-    contenders:   [
-                  {name: "Bobby Lashley", status: "champion"}, 
-                  {name: "Riddle", status: "challenger"},
-                  {name: "Keith Lee", status: "challenger"}
-              ]
-  },
-  {
-      matchName: "24/7 Championship",
-      contenders:   [
-                    {name: "Asuka", status: "champion"}, 
-                    {name: "Orton", status: "challenger"},
-                    {name: "Keith Lee", status: "challenger"}
-                ]
-    },
-    {
-      matchName: "Womens Championship",
-      contenders:   [
-                    {name: "Bobby Lashley", status: "champion"}, 
-                    {name: "Riddle", status: "challenger"},
-                    {name: "Keith Lee", status: "challenger"}
-                ]
-    },
-    {
-      matchName: "North American Championship",
-    contenders:   [
-                  {name: "Johnny Gargano", status: "champion"}, 
-                  {name: "Kushida", status: "challenger"}
-                  ]
-    },
-    {
-      matchName: "United States Championship",
-      contenders:   [
-                    {name: "Bobby Lashley", status: "champion"}, 
-                    {name: "Riddle", status: "challenger"},
-                    {name: "Keith Lee", status: "challenger"}
-                ]
-    }
-];
