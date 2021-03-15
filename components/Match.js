@@ -98,7 +98,7 @@ function Match() {
         Previous Match
       </button>
 
-      {currentMatch == Card.length - 1 ? (
+      {currentMatch == cardi.length - 1 ? (
         <button onClick={finishPrediction} className="nextMatch">
           Finish Prediction
         </button>
