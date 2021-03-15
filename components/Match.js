@@ -15,9 +15,6 @@ function Match() {
 
   const [state, send] = useMachine(stepMachine);
 
-  // states: {
-  //   one: {
-  //     meta: {
 
   const cardi = stepMachine.states;
 
@@ -56,7 +53,7 @@ function Match() {
     );
     setOptionChosen([]);
     setCurrentMatch(currentMatch - 1);
-    send("JUMP");
+    send("PREV");
     console.log(stepMachine.log);
   };
 
@@ -98,7 +95,7 @@ function Match() {
         Previous Match
       </button>
 
-      {currentMatch == Card.length - 1 ? (
+      {currentMatch == cardi.length - 1 ? (
         <button onClick={finishPrediction} className="nextMatch">
           Finish Prediction
         </button>
