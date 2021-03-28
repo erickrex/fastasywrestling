@@ -17,7 +17,7 @@ import { GameStateContext } from "../data/Context";
 export default function Home() {
   const [gameState, setGameState] = useState("menu");
   const [userName, setUserName] = useState("");
-  const [prediction, setPrediction] = useState('');
+  const [prediction, setPrediction] = useState([]);
   
 
   return (

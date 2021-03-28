@@ -73,4 +73,4 @@ export const stepMachine = Machine({
   }
 });
 
-console.log(stepMachine.transition('one', 'NEXT').value);
+//console.log(stepMachine.transition('one', 'NEXT').value);

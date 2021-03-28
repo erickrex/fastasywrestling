@@ -5,6 +5,7 @@ import { useMachine } from "@xstate/react";
 import { Machine, interpret } from "xstate";
 import { useContext } from "react";
 import { GameStateContext } from "../data/Context";
+import { stateValuesEqual } from "xstate/lib/State";
 
 function Match() {
   const [currentMatch, setCurrentMatch] = useState(0);
@@ -13,25 +14,21 @@ function Match() {
     GameStateContext
   );
 
-  const [state, send] = useMachine(stepMachine);
-
-  // states: {
-  //   one: {
-  //     meta: {
+  const [state, sendState] = useMachine(stepMachine);
 
   const cardi = stepMachine.states;
 
   //runs every time the user variable is changed
   useEffect(() => {
-    console.log(optionChosen);
-    console.log(state.nextEvents);
+    //console.log(optionChosen);
+    //console.log(state.nextEvents);
   }, [optionChosen]);
 
   useEffect(() => {
     if (prediction[currentMatch]) {
       setOptionChosen(prediction[currentMatch]);
     }
-    console.log(optionChosen);
+    //console.log(optionChosen);
   }, [prediction]);
 
   const chooseOption = (option) => {
@@ -39,13 +36,62 @@ function Match() {
   };
 
   const nextMatch = () => {
-    setPrediction((prediction) => [...prediction, optionChosen]);
+    console.log("Prediction index")
+    console.log(prediction[currentMatch])
+    console.log(currentMatch)
+    console.log(prediction[state.value])
+    
+    let array2 = prediction.map((a) => {
+      return { ...a };
+    });
+
+    array2.map((val) => {
+      if (Object.keys(val)[0] === state.value) {
+        val[state.value] = optionChosen;
+        setPrediction(...prediction,...array2)
+        console.log("IF YEs" + prediction)
+        return;
+      }
+      else {
+        let insertPrediction = { [state.value] : optionChosen}          
+        setPrediction([...prediction, insertPrediction])
+        console.log("ELSE " + prediction)
+        return;
+      }
+    });
+
+    // prediction.map(fight => {
+    //   if (Object.keys(fight) === state.value){
+    //     Object.values(fight) = optionChosen
+    //     setPrediction()
+    //     break;
+    //   }
+    //   else {
+    //     let insertPrediction = { [state.value] : optionChosen}          
+    //     setPrediction([...prediction, insertPrediction])
+    //     break;
+    //   }
+    // }) 
+    // if (!prediction[state.value]){
+      
+    //     let insertPrediction = { [state.value] : optionChosen}          
+    //     setPrediction([...prediction, insertPrediction])
+
+    //   }
+    //   else {
+    //     prediction.map((pred) => {
+    //       console.log("KEYS OF PRED" + Object.keys(pred))
+    //     })
+        //let insertPrediction = { [state.value] : optionChosen}          
+        //setPrediction([...prediction, insertPrediction])       
+      
+    
+    //
     setOptionChosen([]);
-    console.log("impresion next match");
-    console.log(prediction);
+    
     setCurrentMatch(currentMatch + 1);
-    send("NEXT");
-    console.log(stepMachine.log);
+    
+    sendState("NEXT");
   };
 
   const prevMatch = () => {
@@ -54,10 +100,11 @@ function Match() {
         itemI === currentMatch ? optionChosen : item
       )
     );
+    
     setOptionChosen([]);
     setCurrentMatch(currentMatch - 1);
-    send("JUMP");
-    console.log(stepMachine.log);
+
+    sendState("PREV");
   };
 
   const finishPrediction = () => {
